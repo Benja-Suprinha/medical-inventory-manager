@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <app-login *ngIf="!visualizarMenu()"></app-login>
+            <app-main *ngIf="visualizarMenu()"></app-main>
+        </div>
+    </div>
+</div>

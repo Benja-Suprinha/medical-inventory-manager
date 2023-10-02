@@ -1,0 +1,19 @@
+<form [formGroup]="myForm" (ngSubmit)="submitFormulary()">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Usuario</label>
+        <input formControlName="user" [class.is-invalid]="f.user.errors && f.user.touched" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ingresa tu usuario">
+        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+            Usuario obligatorio.
+        </div>
+    </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
+        <input formControlName="password" [class.is-invalid]="f.password.touched && f.password.errors" type="password" class="form-control" id="exampleFormControlInput1" placeholder="Ingresa tu Contraseña">
+        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+            Contraseña obligatoria.
+        </div>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success">Ingresar</button>
+      </div>
+</form>
