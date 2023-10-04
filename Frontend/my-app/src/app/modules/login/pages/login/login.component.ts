@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthService } from '../../../../shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit{
 
   constructor(
     private fb: FormBuilder,
-    private loginPrd: AuthService
+    private loginPrd: AuthService,
+    private routesv: Router
   ){}
 
   ngOnInit(): void {
@@ -36,6 +38,8 @@ export class LoginComponent implements OnInit{
     console.log(this.myForm.value)
     if(!this.loginPrd.ingresarAplicativo(this.myForm.value)){
       alert("Usuario o contraseña invalida")
+    }else{
+      this.routesv.navigateByUrl("/auth/principal")
     }
   }
 

@@ -12,8 +12,4 @@ export class AppComponent {
   constructor(
     private loginPrd: AuthService
   ){}
-
-  public visualizarMenu(){
-    return this.loginPrd.habilitarLogeo()
-  }
 }
