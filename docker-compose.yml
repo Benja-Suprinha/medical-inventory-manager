@@ -1,0 +1,6 @@
+version: '3.7'
+services:
+  angular:
+    image: my-app
+    ports:
+      - 80:80
