@@ -1,17 +1,11 @@
-FROM python:3.8-slim-buster
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    nginx \
-    gunicorn
-
-ENV FLASK_APP=app.py
-
-RUN pip install flask
-
-COPY . /app
+FROM python:3.10-alpine
 
 WORKDIR /app
 
-EXPOSE 8000
+COPY . .
 
-CMD ["gunicorn", "app:app", "-b", "0.0.0.0:8000"]
+RUN pip install flask
+
+RUN pip install gunicorn
+
+RUN gunicorn -c gunicorn.conf.py app:app
