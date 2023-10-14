@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { AppRoutingModule } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { LoginComponent } from './login/login/login.component';
+import { SesionComponent } from './layouts/public/sesion/sesion.component';
+import { MainComponent } from './layouts/private/main/main.component';
 
 @NgModule({
   imports: [
@@ -21,8 +21,8 @@ import { LoginComponent } from './login/login/login.component';
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
-    LoginComponent,
+    SesionComponent,
+    MainComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
