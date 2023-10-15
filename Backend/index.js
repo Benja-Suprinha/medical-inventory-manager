@@ -13,16 +13,27 @@ app.get('/', (req, res) => {
 
 //ENDPOINT LOGIN SERVICE
 app.post('/auth/user', async (req, res) => {
-    console.log(req.body);
     res.json(await loginService.login(req.body));
 });
 
 //ENDPOINT ADMIN SERVICE
 app.post('/admin/create', async (req, res) => {
-    console.log(req.body);
     res.json(await adminService.create(req.body));
 });
 
+app.get('/admin/read', async (req, res) => {
+  res.json(await adminService.read());
+});
+
+app.post('/admin/update', async (req, res) => {
+  res.json(await adminService.update(req.body));
+});
+
+app.post('/admin/delete', async (req, res) => {
+  res.json(await adminService.deletee(req.body));
+});
+
+//LISTEN PORT
 app.listen(port, () => {
   console.log(`LoginService listen on ${port}`);
 });

@@ -6,12 +6,15 @@ networks:
 
 services:
   angular:
-    image: my-app
+    build:
+      context: ./Frontend/my-app
+      dockerfile: Dockerfile
+    container_name: angular_service
     ports:
       - 80:80
     
   postgresql:
-    container_name: postgresql
+    container_name: postgresql_service
     image: bitnami/postgresql:14
     networks:
       - my_network
@@ -22,11 +25,11 @@ services:
     ports:
       - 5432:5432
 
-  login:
+  backend:
     build:
       context: ./Backend
       dockerfile: dockerfile
-    container_name: login_service
+    container_name: backend_services
     networks:
     - my_network
     depends_on:
