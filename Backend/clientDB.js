@@ -6,7 +6,7 @@ const connectionConfig = {
   password: '2023',
   host: 'postgresql',
   port: 5432,
-  database: 'proyect', // Conéctate a la base de datos "postgres" para crear la base de datos "Arqui_Software"
+  database: 'proyect', 
 };
 
 // Crea una nueva instancia del cliente PostgreSQL
