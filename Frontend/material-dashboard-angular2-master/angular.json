@@ -43,14 +43,6 @@
           },
           "configurations": {
             "production": {
-              "optimization": {
-                "scripts": true,
-                "styles": {
-                  "minify": false,
-                  "inlineCritical": false
-                },
-                "fonts": true
-              },
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
@@ -70,14 +62,6 @@
               "namedChunks": true,
               "buildOptimizer": false,
               "sourceMap": true,
-              "optimization": {
-                "scripts": true,
-                "styles": {
-                  "minify": false,
-                  "inlineCritical": true
-                },
-                "fonts": true
-              },
               "outputHashing": "all"
             }
           }
@@ -167,7 +151,6 @@
       }
     }
   },
-  "defaultProject": "material-dashboard-angular",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
