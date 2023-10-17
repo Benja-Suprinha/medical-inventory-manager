@@ -4,15 +4,7 @@ networks:
   my_network:
     name: 'my_network'
 
-services:
-  angular:
-    build:
-      context: ./Frontend/my-app
-      dockerfile: Dockerfile
-    container_name: angular_service
-    ports:
-      - 80:80
-    
+services:   
   postgresql:
     container_name: postgresql_service
     image: bitnami/postgresql:14
