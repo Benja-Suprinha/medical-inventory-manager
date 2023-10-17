@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { MatTableModule } from '@angular/material/table';
+import { DataTablesModule } from "angular-datatables";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    MatTableModule
+    MatTableModule,
+    DataTablesModule
   ]
 })
 export class PrincipalModule { }
