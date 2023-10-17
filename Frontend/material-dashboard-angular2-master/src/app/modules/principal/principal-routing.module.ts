@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PrincipalComponent } from './pages/principal/principal.component';
 import { MainComponent } from 'app/layouts/private/main/main.component';
 import { TableListComponent } from './pages/table-list/table-list.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes = [{
   path: '',
@@ -19,6 +20,10 @@ const routes: Routes = [{
     {
       path: 'users',
       component: TableListComponent
+    },
+    {
+      path: 'create',
+      component: UserProfileComponent
     }
   ]
 }];

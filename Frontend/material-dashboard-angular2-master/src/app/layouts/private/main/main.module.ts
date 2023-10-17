@@ -14,7 +14,6 @@ import { IconsComponent } from 'app/icons/icons.component';
 import { NotificationsComponent } from 'app/notifications/notifications.component';
 import { TypographyComponent } from 'app/typography/typography.component';
 import { UpgradeComponent } from 'app/upgrade/upgrade.component';
-import { UserProfileComponent } from 'app/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -22,16 +21,9 @@ import { UserProfileComponent } from 'app/user-profile/user-profile.component';
     CommonModule,
     RouterModule.forChild(MainLayoutRoutes),
     FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatRippleModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTooltipModule,
+    ReactiveFormsModule
   ],
   declarations: [
-    UserProfileComponent,
     TypographyComponent,
     IconsComponent,
     NotificationsComponent,
