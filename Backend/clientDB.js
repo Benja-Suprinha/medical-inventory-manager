@@ -33,6 +33,4 @@ setTimeout(() => {
   });
 }, 2000);
 
-
-
 module.exports = clientDB;
