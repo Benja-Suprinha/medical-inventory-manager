@@ -1,0 +1,32 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Tabla de usuarios</h4>
+                      <p class="card-category"> Visualiza a todos los usuarios creados aca!</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table mat-table [dataSource]="users" class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th matColumn>ID</th>
+                                    <th matColumn>Nombre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of users">
+                                    <td>{{user.id}}</td>
+                                    <td>{{user.name}}</td>
+                                </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

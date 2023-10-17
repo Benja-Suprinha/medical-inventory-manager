@@ -12,10 +12,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { IconsComponent } from 'app/icons/icons.component';
 import { NotificationsComponent } from 'app/notifications/notifications.component';
-import { TableListComponent } from 'app/table-list/table-list.component';
 import { TypographyComponent } from 'app/typography/typography.component';
 import { UpgradeComponent } from 'app/upgrade/upgrade.component';
-import { UserProfileComponent } from 'app/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -23,17 +21,9 @@ import { UserProfileComponent } from 'app/user-profile/user-profile.component';
     CommonModule,
     RouterModule.forChild(MainLayoutRoutes),
     FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatRippleModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTooltipModule,
+    ReactiveFormsModule
   ],
   declarations: [
-    UserProfileComponent,
-    TableListComponent,
     TypographyComponent,
     IconsComponent,
     NotificationsComponent,
