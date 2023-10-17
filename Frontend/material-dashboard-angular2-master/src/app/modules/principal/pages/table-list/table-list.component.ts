@@ -80,7 +80,12 @@ export class TableListComponent implements OnInit {
   }
 
   deleteUser(id: number){
-    console.log(id)
+    if(confirm("Seguro que quieres borrar este usuario?")){
+      
+      this.users = this.users.filter(item => item.id !== id)
+
+      console.log(this.users)
+    }
     return true
   }
 }
