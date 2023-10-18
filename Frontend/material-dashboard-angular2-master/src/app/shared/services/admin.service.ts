@@ -18,6 +18,11 @@ export class AdminService {
       })
     )
   }
+
+  addUser(username: string, pass: string, name: string, mail: string, type_user:string, phone: string, id_admin:number){
+    return true
+  }
+
 }
 interface data{
   status: string,
