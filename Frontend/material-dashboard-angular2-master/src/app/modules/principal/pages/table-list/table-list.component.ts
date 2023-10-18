@@ -50,10 +50,15 @@ export class TableListComponent implements OnInit {
     return true
   }
 
-  deleteUser(id: number){
+  async deleteUser(id: number){
     if(confirm("Seguro que quieres borrar este usuario?")){
-      
-      this.users = this.users.filter(item => item.id !== id)
+      const res = await this.adminService.deleteUser(id).toPromise()
+      console.log(res)
+      if(res && res.status){
+        this.users = this.users.filter(item => item.id !== id)
+      }else{
+        alert('Ocurrio un error al eliminar al usuario, intente nuevamente')
+      }
 
       console.log(this.users)
     }

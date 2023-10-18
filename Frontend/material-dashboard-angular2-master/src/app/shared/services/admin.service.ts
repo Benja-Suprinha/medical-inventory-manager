@@ -23,6 +23,16 @@ export class AdminService {
     return true
   }
 
+  deleteUser(idUser:number){
+    return this.http.post('http://localhost:3000/admin/delete/',{
+      id_user:idUser
+    }).pipe(
+      map((res:any)=>{
+        return res
+      })
+    )
+  }
+
 }
 interface data{
   status: string,
