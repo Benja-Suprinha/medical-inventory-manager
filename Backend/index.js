@@ -1,14 +1,21 @@
 const express = require('express');
+const cors = require('cors');
 const loginService = require('./login/loginService');
 const adminService = require('./admin/adminService');
 
 const app = express();
 const port = 3000;
+const corsOptions = {
+  origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: 'Content-Type,Authorization',
+};
 
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('LoginService run');
+  res.send('Backend Services run');
 });
 
 //ENDPOINT LOGIN SERVICE
