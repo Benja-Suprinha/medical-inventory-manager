@@ -8,61 +8,42 @@
                       <p class="card-category">Completa el formulario y crea a los usuarios aca!</p>
                   </div>
                   <div class="card-body">
-                      <form>
+                      <form [formGroup]="myForm" (ngSubmit)="submitFormulary()">
                           <div class="row">
-                              <div class="col-md-5">
-                                <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Company (disabled)" disabled>
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Username">
+                                    <input matInput formControlName="username" placeholder="Username">
                                   </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Email address" type="email">
+                                    <input matInput formControlName="mail" placeholder="Email address" type="email">
                                   </mat-form-field>
                               </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Fist Name" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-6">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Last Name" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Adress" type="text">
+                                  <input matInput formControlName="password" placeholder="Password" type="password">
                                 </mat-form-field>
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="City" type="text">
+                                  <input matInput formControlName="name" placeholder="Nombre" type="text">
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Country" type="text">
+                                  <input matInput formControlName="type_user" placeholder="Tipo de usuario" type="text">
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Postal Code" type="text">
+                                  <input matInput formControlName="phone" placeholder="Telefono" type="text">
                                 </mat-form-field>
                               </div>
                           </div>
-                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+                          <button mat-raised-button class="btn btn-danger pull-right">Agregar usuario</button>
                           <div class="clearfix"></div>
                       </form>
                   </div>
