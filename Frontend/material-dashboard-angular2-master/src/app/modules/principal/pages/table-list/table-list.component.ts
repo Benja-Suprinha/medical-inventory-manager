@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { AdminService } from 'app/shared/services/admin.service';
 
 @Component({
   selector: 'app-table-list',
@@ -10,51 +10,13 @@ import { MatTableModule } from '@angular/material/table';
 
 export class TableListComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
-  users: User[] = [
-    {
-      "id": 1,
-      "name": "Juan Pérez"
-    },
-    {
-      "id": 2,
-      "name": "María López"
-    },
-    {
-      "id": 3,
-      "name": "Pedro Sánchez"
-    },
-    {
-      "id": 4,
-      "name": "Ana García"
-    },
-    {
-      "id": 5,
-      "name": "Luis Fernández"
-    },
-    {
-      "id": 6,
-      "name": "Marta Gómez"
-    },
-    {
-      "id": 7,
-      "name": "David Rodríguez"
-    },
-    {
-      "id": 8,
-      "name": "Carmen González"
-    },
-    {
-      "id": 9,
-      "name": "José Hernández"
-    },
-    {
-      "id": 10,
-      "name": "Isabel Martín"
-    }
-  ]
-  constructor() { }
+  users: any[] = []
+  constructor(
+    private adminService:AdminService
+  ) { }
 
   ngOnInit() {
+    this.users = this.adminService.Users()
     this.dtOptions = {
       language: {
         "search":"",
@@ -91,5 +53,6 @@ export class TableListComponent implements OnInit {
 }
 interface User{
   id: number,
-  name: string
+  name: string,
+  username: string
 }
