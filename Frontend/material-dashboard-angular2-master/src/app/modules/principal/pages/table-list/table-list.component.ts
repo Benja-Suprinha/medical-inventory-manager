@@ -11,12 +11,21 @@ import { AdminService } from 'app/shared/services/admin.service';
 export class TableListComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   users: any[] = []
+  waiting: boolean = true
+
   constructor(
     private adminService:AdminService
   ) { }
 
   ngOnInit() {
-    this.users = this.adminService.Users()
+    this.initTable()
+  }
+
+  async initTable(){
+    const data: any = await this.adminService.Users().toPromise()
+    this.waiting = false
+    this.users = data
+    console.log(this.users)
     this.dtOptions = {
       language: {
         "search":"",

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,11 @@ export class AdminService {
   ) { }
 
   Users(): any{
-    this.http.get('http://190.209.25.193:3000/admin/read').subscribe((data:data)=>{
-      console.log(data.data)
-      return data.data
-    })
+    return this.http.get('http://localhost:3000/admin/read').pipe(
+      map((data:data)=>{
+        return data.data
+      })
+    )
   }
 }
 interface data{

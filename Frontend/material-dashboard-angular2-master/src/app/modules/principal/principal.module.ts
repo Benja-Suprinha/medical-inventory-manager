@@ -14,13 +14,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { MatTableModule } from '@angular/material/table';
 import { DataTablesModule } from "angular-datatables";
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
   declarations: [
     PrincipalComponent,
     TableListComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,7 @@ import { DataTablesModule } from "angular-datatables";
     MatSelectModule,
     MatTooltipModule,
     MatTableModule,
-    DataTablesModule
+    DataTablesModule,
   ]
 })
 export class PrincipalModule { }

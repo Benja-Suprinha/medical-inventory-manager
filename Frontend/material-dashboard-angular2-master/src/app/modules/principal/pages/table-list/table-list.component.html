@@ -9,12 +9,13 @@
                   </div>
                   <div class="card-body">
                     
-                      <div class="table-responsive">
+                      <div class="table-responsive" *ngIf="!waiting">
                         <table datatable [dtOptions]="dtOptions" class="row-border hover">
                         <thead>
                           <tr>
                             <th>ID</th>
                             <th>Nombre</th>
+                            <th>Tipo de usuario</th>
                             <th>Editar</th>
                             <th>Borrar</th>
                           </tr>
@@ -23,6 +24,7 @@
                           <tr *ngFor="let user of users">
                             <td>{{user.id}}</td>
                             <td>{{user.name}}</td>
+                            <td>{{user.type_user}}</td>
                             <td>
                                 <button mat-raised-button color="primary" class="mat-button" size="large" (click)="editUser(user.id)">Editar</button>
                             </td>
@@ -31,8 +33,10 @@
                             </td>
                           </tr>
                         </tbody>
-                      </table>
-                      
+                        </table>
+                      </div>
+                      <div class="table-responsive" *ngIf="waiting">
+                        <app-spinner></app-spinner>
                       </div>
                   </div>
               </div>
