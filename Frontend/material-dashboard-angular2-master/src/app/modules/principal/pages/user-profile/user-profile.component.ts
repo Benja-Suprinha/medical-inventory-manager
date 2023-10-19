@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AdminService } from 'app/shared/services/admin.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,7 +13,8 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private routeSv: Router
+    private routeSv: Router,
+    private adminService: AdminService
   ) { }
 
   ngOnInit() {
@@ -30,8 +32,23 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
-  submitFormulary(){
-    console.log(this.myForm.value)
+  async submitFormulary(){
+    const res = await this.adminService.addUser(
+      this.myForm.value.username,
+      this.myForm.value.pass,
+      this.myForm.value.name,
+      this.myForm.value.mail,
+      this.myForm.value.type_user,
+      this.myForm.value.phone,
+      1
+    ).toPromise()
+    console.log(res)
+    if(res && res.status){
+      alert("Usuario creado con exito")
+      this.myForm.reset()
+    }else{
+      alert("Ocurrio un error intente nuevamente")
+    }
   }
 
 }

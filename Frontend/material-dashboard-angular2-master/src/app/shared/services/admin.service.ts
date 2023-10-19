@@ -20,7 +20,19 @@ export class AdminService {
   }
 
   addUser(username: string, pass: string, name: string, mail: string, type_user:string, phone: string, id_admin:number){
-    return true
+    return this.http.post('http://localhost:3000/admin/create/',{
+      id_admin:id_admin,
+      type_user:type_user,
+      username:username,
+      password:pass,
+      name:name,
+      mail:mail,
+      telefono:phone
+    }).pipe(
+      map((res:any)=>{
+        return res
+      })
+    )
   }
 
   deleteUser(idUser:number){
