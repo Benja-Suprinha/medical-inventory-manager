@@ -45,6 +45,10 @@ export class AdminService {
     )
   }
 
+  get userId(){
+    return sessionStorage.id ? sessionStorage.id : false
+  }
+
 }
 interface data{
   status: string,

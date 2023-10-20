@@ -40,7 +40,7 @@ export class UserProfileComponent implements OnInit {
       this.myForm.value.mail,
       this.myForm.value.type_user,
       this.myForm.value.phone,
-      1
+      sessionStorage.id
     ).toPromise()
     console.log(res)
     if(res && res.status){

@@ -14,7 +14,7 @@ export class TableListComponent implements OnInit {
   waiting: boolean = true
 
   constructor(
-    private adminService:AdminService
+    private adminService:AdminService,
   ) { }
 
   ngOnInit() {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ export class AuthService {
 
   private ingresar: boolean = false;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   async ingresarAplicativo(obj: any){
@@ -19,10 +21,16 @@ export class AuthService {
     if(!data.status){
       alert('Usuario o contraseña incorrectos!')
       this.ingresar = false
+      this.router.navigateByUrl('/noauth/login')
+      return false
     }else{
+      sessionStorage.setItem('status', data.status)
+      sessionStorage.setItem('role', data.type_user)
+      sessionStorage.setItem('id', data.id)
+      console.log(sessionStorage.id)
       this.ingresar = true
+      return true
     }
-    return true
   }
 
   public habilitarLogeo(){
