@@ -8,6 +8,7 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { SesionComponent } from './layouts/public/sesion/sesion.component';
 import { MainComponent } from './layouts/private/main/main.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { MainComponent } from './layouts/private/main/main.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    NgbModule,
   ],
   declarations: [
     AppComponent,

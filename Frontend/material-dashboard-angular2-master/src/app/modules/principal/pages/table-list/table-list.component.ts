@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AdminService } from 'app/shared/services/admin.service';
+import { ModalDismissReasons, NgbActiveModal, NgbDatepickerModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-table-list',
   templateUrl: './table-list.component.html',
-  styleUrls: ['./table-list.component.css'],
+  styleUrls: ['./table-list.component.css']
 })
 
 
@@ -12,9 +14,12 @@ export class TableListComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   users: any[] = []
   waiting: boolean = true
+  closeResult = '';
 
   constructor(
     private adminService:AdminService,
+    public modal: NgbModal,
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit() {
@@ -45,10 +50,25 @@ export class TableListComponent implements OnInit {
     };
   }
 
-  editUser(id: number){
-    console.log(id)
-    return true
+  public myForm!: FormGroup
+  editUser(contenido,user:any){
+    console.log(contenido)
+    console.log(user)
+    this.myForm = this.fb.group({
+      username:[user.username],
+      mail:[user.mail],
+      password:[user.password],
+      name:[user.name],
+      type_user:[user.type_user],
+      phone:[user.telefono]
+    })
+    this.modal.open(
+      contenido,{
+        backdrop:false
+      }
+    )
   }
+
 
   async deleteUser(id: number){
     if(confirm("Seguro que quieres borrar este usuario?")){
@@ -64,6 +84,11 @@ export class TableListComponent implements OnInit {
     }
     return true
   }
+
+  submitFormulary(){
+    console.log('Usuario editado con exito')
+  }
+
 }
 interface User{
   id: number,

@@ -15,7 +15,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { MatTableModule } from '@angular/material/table';
 import { DataTablesModule } from "angular-datatables";
 import { SpinnerComponent } from './spinner/spinner.component';
-import { EditUserModalComponent } from './pages/edit-user-modal/edit-user-modal.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -24,7 +24,6 @@ import { EditUserModalComponent } from './pages/edit-user-modal/edit-user-modal.
     TableListComponent,
     UserProfileComponent,
     SpinnerComponent,
-    EditUserModalComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +38,8 @@ import { EditUserModalComponent } from './pages/edit-user-modal/edit-user-modal.
     MatTooltipModule,
     MatTableModule,
     DataTablesModule,
-  ]
+    NgbModalModule
+  ],
+  entryComponents: [TableListComponent]
 })
 export class PrincipalModule { }

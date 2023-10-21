@@ -28,7 +28,7 @@
                             <td>{{user.type_user}}</td>
                             <td>{{user.mail}}</td>
                             <td>
-                                <button mat-raised-button color="primary" class="mat-button" size="large" (click)="editUser(user.id)">Editar</button>
+                                <button mat-raised-button color="primary" class="mat-button" size="large" (click)="editUser(contenido,user)">Editar</button>
                             </td>
                             <td>
                                 <button mat-raised-button color="warn" class="mat-button" size="large" (click)="deleteUser(user.id)">Eliminar</button>
@@ -46,3 +46,52 @@
       </div>
   </div>
 </div>
+
+<ng-template #contenido let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Edita al usuario</h4>
+    <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="myForm" (ngSubmit)="submitFormulary()">
+      <div class="row">
+          <div class="col-md-4">
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="username" placeholder="Username">
+              </mat-form-field>
+          </div>
+          <div class="col-md-4">
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="mail" placeholder="Email address" type="email">
+              </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <input matInput formControlName="password" placeholder="Password" type="text">
+            </mat-form-field>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <input matInput formControlName="name" placeholder="Nombre" type="text">
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <input matInput formControlName="type_user" placeholder="Tipo de usuario" type="text">
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+              <input matInput formControlName="phone" placeholder="Telefono" type="text">
+            </mat-form-field>
+          </div>
+      </div>
+      <button mat-raised-button class="btn btn-danger pull-right">Agregar usuario</button>
+      <div class="clearfix"></div>
+  </form>
+  </div>
+</ng-template>
