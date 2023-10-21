@@ -51,9 +51,11 @@ export class TableListComponent implements OnInit {
   }
 
   public myForm!: FormGroup
+  idUser: number 
   editUser(contenido,user:any){
     console.log(contenido)
     console.log(user)
+    this.idUser = user.id
     this.myForm = this.fb.group({
       username:[user.username],
       mail:[user.mail],
@@ -85,8 +87,25 @@ export class TableListComponent implements OnInit {
     return true
   }
 
-  submitFormulary(){
+  async submitFormulary(){
+    console.log(this.idUser)
+    const res = await this.adminService.editUser(
+      this.myForm.value.username,
+      this.myForm.value.pass,
+      this.myForm.value.name,
+      this.myForm.value.mail,
+      this.myForm.value.type_user,
+      this.myForm.value.phone,
+      this.idUser
+    ).toPromise()
+    console.log(res)
     console.log('Usuario editado con exito')
+    if(res && res.status){
+      alert("Usuario editado con exito")
+      this.modal.dismissAll()
+    }else{
+      alert("Ocurrio un error intente nuevamente")
+    }
   }
 
 }

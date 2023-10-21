@@ -45,6 +45,24 @@ export class AdminService {
     )
   }
 
+  editUser(username: string, pass: string, name: string, mail: string, type_user:string, phone: string, idUser:number){
+    const idAdmin = this.userId
+    return this.http.post('http://localhost:3000/admin/update/',{
+      id_user:idUser,
+      id_admin:idAdmin,
+      type_user:type_user,
+      username:username,
+      password:pass,
+      name:name,
+      mail:mail,
+      telefono:phone
+    }).pipe(
+      map((res:any)=>{
+        return res
+      })
+    )
+  }
+
   get userId(){
     return sessionStorage.id ? sessionStorage.id : false
   }
