@@ -103,6 +103,7 @@ export class TableListComponent implements OnInit {
     if(res && res.status){
       alert("Usuario editado con exito")
       this.modal.dismissAll()
+      this.initTable()
     }else{
       alert("Ocurrio un error intente nuevamente")
     }
