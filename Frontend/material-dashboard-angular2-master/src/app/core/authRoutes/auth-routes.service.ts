@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,8 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class AuthRoutesService implements CanActivate {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    if (!sessionStorage.getItem('status')) {
+      this.router.navigateByUrl('/noauth/login')
+    }
     return sessionStorage.getItem('status') ? true : false
   }
 }
