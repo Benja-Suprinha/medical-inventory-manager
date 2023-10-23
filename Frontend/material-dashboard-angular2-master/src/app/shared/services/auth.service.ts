@@ -15,7 +15,6 @@ export class AuthService {
   ) { }
 
   async ingresarAplicativo(obj: any) {
-    console.log(obj)
     const data: any = await this.log(obj.user, obj.password).toPromise()
     console.log(data)
     if (!data.status) {

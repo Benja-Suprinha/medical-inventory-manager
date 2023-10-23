@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public myForm!: FormGroup;
+  waiting: boolean = true
 
   constructor(
     private fb: FormBuilder,
@@ -28,15 +29,11 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  public submitFormulary() {
-    if (this.myForm.invalid) {
-      Object.values(this.myForm.controls).forEach(control => {
-        control.markAllAsTouched();
-      })
-      return
-    }
+  public async submitFormulary() {
+    const status = await this.loginPrd.ingresarAplicativo(this.myForm.value)
+
     console.log(this.myForm.value)
-    if (!this.loginPrd.ingresarAplicativo(this.myForm.value)) {
+    if (!status) {
       alert("Usuario o contraseña invalida")
     } else {
       this.routesv.navigateByUrl("/principal")
