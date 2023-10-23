@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthRoutesService implements CanActivate{
+export class AuthRoutesService implements CanActivate {
 
   constructor() { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    return false;
+    return sessionStorage.getItem('status') ? true : false
   }
 }

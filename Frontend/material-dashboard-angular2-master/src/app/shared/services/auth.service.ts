@@ -14,35 +14,35 @@ export class AuthService {
     private router: Router
   ) { }
 
-  async ingresarAplicativo(obj: any){
+  async ingresarAplicativo(obj: any) {
     console.log(obj)
-    const data: any = await this.log(obj.user,obj.password).toPromise()
+    const data: any = await this.log(obj.user, obj.password).toPromise()
     console.log(data)
-    if(!data.status){
+    if (!data.status) {
       alert('Usuario o contraseña incorrectos!')
       this.ingresar = false
       this.router.navigateByUrl('/noauth/login')
       return false
-    }else{
+    } else {
       sessionStorage.setItem('status', data.status)
       sessionStorage.setItem('role', data.type_user)
       sessionStorage.setItem('id', data.id)
-      console.log(sessionStorage.id)
+      console.log(sessionStorage)
       this.ingresar = true
       return true
     }
   }
 
-  public habilitarLogeo(){
+  public habilitarLogeo() {
     return this.ingresar
   }
 
-  log(user:string,pass:string){
+  log(user: string, pass: string) {
     return this.http.post('http://localhost:3000/auth/user', {
-      username:user,
-      password:pass
+      username: user,
+      password: pass
     }).pipe(
-      map((response:any)=>{
+      map((response: any) => {
         return response
       })
     )
