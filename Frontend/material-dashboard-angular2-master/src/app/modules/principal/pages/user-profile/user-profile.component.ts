@@ -18,24 +18,24 @@ export class UserProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.myForm = this.createMyForm() 
+    this.myForm = this.createMyForm()
   }
 
-  createMyForm(): FormGroup{
+  createMyForm(): FormGroup {
     return this.fb.group({
-      username:[''],
-      mail:[''],
-      password:[''],
-      name:[''],
-      type_user:[''],
-      phone:['']
+      username: [''],
+      mail: [''],
+      password: [''],
+      name: [''],
+      type_user: [''],
+      phone: ['']
     })
   }
 
-  async submitFormulary(){
+  async submitFormulary() {
     const res = await this.adminService.addUser(
       this.myForm.value.username,
-      this.myForm.value.pass,
+      this.myForm.value.password,
       this.myForm.value.name,
       this.myForm.value.mail,
       this.myForm.value.type_user,
@@ -43,10 +43,10 @@ export class UserProfileComponent implements OnInit {
       sessionStorage.id
     ).toPromise()
     console.log(res)
-    if(res && res.status){
+    if (res && res.status) {
       alert("Usuario creado con exito")
       this.myForm.reset()
-    }else{
+    } else {
       alert("Ocurrio un error intente nuevamente")
     }
   }

@@ -1,54 +1,54 @@
 <div class="main-content">
   <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title">Formulario de creacion</h4>
-                      <p class="card-category">Completa el formulario y crea a los usuarios aca!</p>
-                  </div>
-                  <div class="card-body">
-                      <form [formGroup]="myForm" (ngSubmit)="submitFormulary()">
-                          <div class="row">
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput formControlName="username" placeholder="Username">
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput formControlName="mail" placeholder="Email address" type="email">
-                                  </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput formControlName="password" placeholder="Password" type="password">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput formControlName="name" placeholder="Nombre" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput formControlName="type_user" placeholder="Tipo de usuario" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput formControlName="phone" placeholder="Telefono" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <button mat-raised-button class="btn btn-danger pull-right">Agregar usuario</button>
-                          <div class="clearfix"></div>
-                      </form>
-                  </div>
-              </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Formulario de creacion</h4>
+            <p class="card-category">Completa el formulario y crea a los usuarios aca!</p>
           </div>
+          <div class="card-body">
+            <form [formGroup]="myForm" (ngSubmit)="submitFormulary()">
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput formControlName="username" placeholder="Username">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput formControlName="mail" placeholder="Email address" type="email">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput formControlName="password" placeholder="Password" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput formControlName="name" placeholder="Nombre" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput formControlName="type_user" placeholder="Tipo de usuario" type="text">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput formControlName="phone" placeholder="Telefono" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <button mat-raised-button class="btn btn-danger pull-right">Agregar usuario</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
