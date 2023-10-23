@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const loginService = require('./login/loginService');
 const adminService = require('./admin/adminService');
+const inventarioService = require('./inventario/inventarioService');
 
 const app = express();
 const port = 3000;
@@ -38,6 +39,15 @@ app.post('/admin/update', async (req, res) => {
 
 app.post('/admin/delete', async (req, res) => {
   res.json(await adminService.deletee(req.body));
+});
+
+//ENDPOINT INVENTARIO SERVICE
+app.post('/inventario/create', async (req, res) => {
+  res.json(await inventarioService.create(req.body));
+});
+
+app.get('/inventario/read', async (req, res) => {
+  res.json(await inventarioService.read());
 });
 
 //LISTEN PORT
