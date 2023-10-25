@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
+import { ROUTES1 } from '../sidebar/sidebar.component';
+import { ROUTES2 } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -14,6 +16,7 @@ export class NavbarComponent implements OnInit {
     mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    type_user = sessionStorage.getItem('role')
 
     constructor(location: Location, private element: ElementRef, private router: Router) {
         this.location = location;
@@ -21,7 +24,9 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.listTitles = ROUTES.filter(listTitle => listTitle);
+        if(this.type_user === 'admin') this.listTitles = ROUTES.filter(listTitle => listTitle);
+        if(this.type_user === 'encargado_inventario') this.listTitles = ROUTES1.filter(listTitle => listTitle);
+        if(this.type_user === 'personal_medico') this.listTitles = ROUTES2.filter(menuItems => menuItems)
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
         this.router.events.subscribe((event) => {

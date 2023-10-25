@@ -11,9 +11,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { IconsComponent } from 'app/icons/icons.component';
-import { NotificationsComponent } from 'app/notifications/notifications.component';
-import { TypographyComponent } from 'app/typography/typography.component';
-import { UpgradeComponent } from 'app/upgrade/upgrade.component';
 
 
 @NgModule({
@@ -24,10 +21,7 @@ import { UpgradeComponent } from 'app/upgrade/upgrade.component';
     ReactiveFormsModule
   ],
   declarations: [
-    TypographyComponent,
     IconsComponent,
-    NotificationsComponent,
-    UpgradeComponent,
   ]
 })
 export class MainModule { }
