@@ -14,7 +14,6 @@ export class TableListComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   users: any[] = []
   waiting: boolean = true
-  closeResult = '';
 
   constructor(
     private adminService: AdminService,

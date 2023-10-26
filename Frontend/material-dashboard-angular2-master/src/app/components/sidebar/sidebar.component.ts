@@ -14,7 +14,7 @@ export const ROUTES: RouteInfo[] = [
 ];
 export const ROUTES1: RouteInfo[] = [
   { path: '/manager/resumen', title: 'Dashboard', icon: 'dashboard', class: '' },
-  { path: '/manager/products', title: 'Ver Productos', icon: 'content_paste', class: ''},
+  { path: '/manager/products', title: 'Ver Inventario', icon: 'content_paste', class: ''},
   { path: '/manager/create', title: 'Crear Productos', icon: 'library_books', class: '' },
   { path: '/manager/history', title: 'Ver Historial', icon: 'library_books', class: '' },
 ]
