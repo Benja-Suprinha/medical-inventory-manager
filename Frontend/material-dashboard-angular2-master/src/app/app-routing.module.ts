@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './layouts/private/main/main.component';
 import { SesionComponent } from './layouts/public/sesion/sesion.component';
 import { AuthRoutesService } from './core/authRoutes/auth-routes.service';
+import { ManagerModule } from './modules/manager/manager.module';
 
 const routes: Routes = [
   {
@@ -20,6 +21,14 @@ const routes: Routes = [
     path: 'principal',
     canActivate: [AuthRoutesService],
     loadChildren: () => import("./modules/principal/principal.module").then(m => m.PrincipalModule)
+  },
+  {
+    path: 'manager',
+    loadChildren: () => import("./modules/manager/manager.module").then(m => m.ManagerModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import("./modules/user/user.module").then(m => m.UserModule)
   },
   {
     path: '**', redirectTo: '/noauth/login'

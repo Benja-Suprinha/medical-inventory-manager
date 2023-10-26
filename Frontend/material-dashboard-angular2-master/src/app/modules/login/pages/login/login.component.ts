@@ -33,10 +33,14 @@ export class LoginComponent implements OnInit {
     const status = await this.loginPrd.ingresarAplicativo(this.myForm.value)
 
     console.log(this.myForm.value)
-    if (!status) {
-      alert("Usuario o contraseña invalida")
-    } else {
-      this.routesv.navigateByUrl("/principal")
+    if(status && this.loginPrd.role === 'admin'){
+      this.routesv.navigateByUrl('/principal')
+    }
+    if(status && this.loginPrd.role === 'encargado_inventario'){
+      this.routesv.navigateByUrl('/manager')
+    }
+    if(status && this.loginPrd.role === 'personal_medico'){
+      this.routesv.navigateByUrl('/user')
     }
   }
 

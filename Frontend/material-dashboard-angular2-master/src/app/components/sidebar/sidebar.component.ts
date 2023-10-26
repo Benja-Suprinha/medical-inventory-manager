@@ -13,10 +13,13 @@ export const ROUTES: RouteInfo[] = [
   { path: '/principal/create', title: 'Crear Usuarios', icon: 'library_books', class: '' },
 ];
 export const ROUTES1: RouteInfo[] = [
-  { path: '/principal/resumen', title: 'Dashboard', icon: 'dashboard', class: '' },
+  { path: '/manager/resumen', title: 'Dashboard', icon: 'dashboard', class: '' },
+  { path: '/manager/products', title: 'Ver Productos', icon: 'content_paste', class: ''},
+  { path: '/manager/create', title: 'Crear Productos', icon: 'library_books', class: '' },
+  { path: '/manager/history', title: 'Ver Historial', icon: 'library_books', class: '' },
 ]
 export const ROUTES2: RouteInfo[] = [
-  { path: '/principal/resumen', title: 'Dashboard', icon: 'dashboard', class: '' },
+  { path: '/user/resumen', title: 'Dashboard', icon: 'dashboard', class: '' },
 ]
 
 @Component({

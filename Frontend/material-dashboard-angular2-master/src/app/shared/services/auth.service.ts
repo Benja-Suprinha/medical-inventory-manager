@@ -36,6 +36,10 @@ export class AuthService {
     return this.ingresar
   }
 
+  get role(){
+    return sessionStorage.getItem('role')
+  }
+
   log(user: string, pass: string) {
     return this.http.post('http://localhost:3000/auth/user', {
       username: user,
