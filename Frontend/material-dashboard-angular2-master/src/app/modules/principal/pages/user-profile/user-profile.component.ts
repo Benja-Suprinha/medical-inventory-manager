@@ -44,7 +44,7 @@ export class UserProfileComponent implements OnInit {
     ).toPromise()
     console.log(res)
     if (res && res.status) {
-      alert("Usuario creado con exito")
+      alert("Usuario creado con exito!")
       this.myForm.reset()
     } else {
       alert("Ocurrio un error intente nuevamente")

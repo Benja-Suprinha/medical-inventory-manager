@@ -1,1 +1,44 @@
-<p>create-products works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Formulario de creacion</h4>
+              <p class="card-category">Completa el formulario y crea a los insumos del inventario aca!</p>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="myForm" (ngSubmit)="submitFormulary()">
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput formControlName="nameProduct" placeholder="Nombre del producto">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput formControlName="description" placeholder="Descripcion" type="email">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput formControlName="cantidad" placeholder="Cantidad" type="text">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput formControlName="price" placeholder="Precio" type="text">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <button mat-raised-button class="btn btn-danger pull-right">Agregar item!</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

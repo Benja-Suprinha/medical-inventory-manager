@@ -1,0 +1,7 @@
+.card .card-header-danger .card-icon, .card .card-header-danger .card-text, .card .card-header-danger:not(.card-header-icon):not(.card-header-text), .card.bg-danger, .card.card-rotate.bg-danger .front, .card.card-rotate.bg-danger .back{
+    background: linear-gradient(60deg,#bed602,#bed602);
+}
+
+.mat-button.btn.btn-danger, .mat-raised-button.btn.btn-danger, .mat-raised-button.btn:not([class*=mat-elevation-z]).btn-danger, .btn.btn-danger{
+    background-color: #bed602;
+}
