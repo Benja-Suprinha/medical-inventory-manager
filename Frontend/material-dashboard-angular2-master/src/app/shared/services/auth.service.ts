@@ -23,6 +23,7 @@ export class AuthService {
       this.router.navigateByUrl('/noauth/login')
       return false
     } else {
+      sessionStorage.setItem('user',obj.user)
       sessionStorage.setItem('status', data.status)
       sessionStorage.setItem('role', data.type_user)
       sessionStorage.setItem('id', data.id)
