@@ -50,7 +50,19 @@ app.get('/inventario/read', async (req, res) => {
   res.json(await inventarioService.read());
 });
 
+app.post('/inventario/update', async (req, res) => {
+  res.json(await inventarioService.update(req.body));
+});
+
+app.post('/inventario/replenish', async (req, res) => {
+  res.json(await inventarioService.replenish(req.body));
+});
+
+app.post('/inventario/delete', async (req, res) => {
+  res.json(await inventarioService.deletee(req.body));
+});
+
 //LISTEN PORT
 app.listen(port, () => {
-  console.log(`LoginService listen on ${port}`);
+  console.log(`Backend listen on ${port}`);
 });
