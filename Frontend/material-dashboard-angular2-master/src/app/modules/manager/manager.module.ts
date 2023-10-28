@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     TableProductsComponent,
     CreateProductsComponent,
     ManagerComponent,
-    HistoryComponent
+    HistoryComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,

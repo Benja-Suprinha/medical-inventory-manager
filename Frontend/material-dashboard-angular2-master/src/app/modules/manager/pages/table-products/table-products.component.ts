@@ -64,10 +64,12 @@ export class TableProductsComponent implements OnInit {
     )
   }
   deleteProduct(id: number){
-    console.log(id)
+    if(confirm("Seguro quieres borrar este item?")){
+      this.products = this.products.filter(item => item.id !== id)
+    }
   }
   nameProduct?:string
-  idProduct?:number
+  idProduct?:string
   replenishProduct(replenishModal,product){
     this.nameProduct = product.name_product
     this.idProduct = product.id
@@ -81,10 +83,31 @@ export class TableProductsComponent implements OnInit {
       }
     )
   }
-  edit(){
-    console.log(this.nameProduct)
+  async edit(){
+    const res = await this.managerService.editProduct(
+      this.idProduct,
+      this.myForm.value.name,
+      this.myForm.value.description,
+      this.myForm.value.cantidad,
+      this.myForm.value.price
+    ).toPromise()
+    console.log(res)
+    if(res && res.status){
+      alert("Item editado correctamente!")
+      this.initTable()
+      this.modal.dismissAll()
+    } else{
+      alert("Ocurrio un error intente nuevamente")
+    }
   }
-  replenish(){
-    console.log(this.idProduct)
+  async replenish(){
+    console.log(this.myForm.value.cantidad, this.idProduct)
+    const res = await this.managerService.replenishProduct(
+      this.idProduct, 
+      this.myForm.value.cantidad
+      ).toPromise()
+    console.log(res)
+    this.initTable()
+    this.modal.dismissAll()
   }
 }

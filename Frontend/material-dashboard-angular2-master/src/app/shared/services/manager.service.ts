@@ -34,12 +34,32 @@ export class ManagerService {
       })
     )
   }
-  replenishProduct(id: number, cantidad: number){
+
+  editProduct(id: string, nameProduct: string, description: string, cantidad: number, price: number){
+    return this.http.post('http://localhost:3000/inventario/update',{
+      id_item:id,
+      username: this.logs.Username,
+      name_product:nameProduct,
+      descripcion:description,
+      cantidad:cantidad,
+      precio:price
+    }).pipe(
+      map((res:any)=>{
+        return res
+      })
+    )
+  }
+
+  replenishProduct(id: string, cantidad: number){
     return this.http.post('http://localhost:3000/inventario/replenish',{
       id_iteam:id,
       username:this.logs.Username,
       cantidad:cantidad
-    })
+    }).pipe(
+      map((res:any)=>{
+        return res
+      })
+    )
   }
 }
 
