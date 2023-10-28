@@ -34,7 +34,15 @@ export class ManagerService {
       })
     )
   }
+  replenishProduct(id: number, cantidad: number){
+    return this.http.post('http://localhost:3000/inventario/replenish',{
+      id_iteam:id,
+      username:this.logs.Username,
+      cantidad:cantidad
+    })
+  }
 }
+
 interface data{
   status: string,
   code: number,

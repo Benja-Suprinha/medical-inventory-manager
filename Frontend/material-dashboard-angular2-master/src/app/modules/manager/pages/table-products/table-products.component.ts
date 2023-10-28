@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ManagerService } from 'app/shared/services/manager.service';
 
@@ -47,10 +47,44 @@ export class TableProductsComponent implements OnInit {
     };
   }
 
-  editProduct(user){
-    console.log(user)
+  public myForm!: FormGroup
+  editProduct(editModal,product){
+    this.nameProduct = product.name_product
+    this.idProduct = product.id
+    this.myForm = this.fb.group({
+      name:[product.name_product],
+      description:[product.descripcion],
+      cantidad:[product.cantidad],
+      price:[product.precio]
+    })
+    this.modal.open(
+      editModal, {
+        backdrop: false
+      }
+    )
   }
   deleteProduct(id: number){
     console.log(id)
+  }
+  nameProduct?:string
+  idProduct?:number
+  replenishProduct(replenishModal,product){
+    this.nameProduct = product.name_product
+    this.idProduct = product.id
+    console.log(this.nameProduct)
+    this.myForm=this.fb.group({
+      cantidad:['1']
+    })
+    this.modal.open(
+      replenishModal,{
+        backdrop:false
+      }
+    )
+  }
+  edit(){
+    console.log(this.nameProduct)
+  }
+  replenish(){
+    console.log(this.idProduct)
   }
 }
