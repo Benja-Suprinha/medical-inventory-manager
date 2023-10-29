@@ -4,7 +4,9 @@
             <a class="navbar-brand" href="javascript:void(0)">{{getTitle()}}</a>
         </div>
         <div class="navbar-wrapper">
-            <a class="navbar-brand" (click)="logOut()">Cerrar sesión</a>
+            <button type="button" class="btn btn-danger btn-sm" (click)="logOut()">
+            Cerrar sesión
+            </button>
         </div>
         <button mat-raised-button class="navbar-toggler" type="button" (click)="sidebarToggle()">
             <span class="sr-only">Toggle navigation</span>
