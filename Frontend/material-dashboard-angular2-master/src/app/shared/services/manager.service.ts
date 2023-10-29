@@ -52,7 +52,7 @@ export class ManagerService {
 
   replenishProduct(id: string, cantidad: number){
     return this.http.post('http://localhost:3000/inventario/replenish',{
-      id_iteam:id,
+      id_item:id,
       username:this.logs.Username,
       cantidad:cantidad
     }).pipe(

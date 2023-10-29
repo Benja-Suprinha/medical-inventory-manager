@@ -48,6 +48,7 @@ export class TableProductsComponent implements OnInit {
   }
 
   public myForm!: FormGroup
+
   editProduct(editModal,product){
     this.nameProduct = product.name_product
     this.idProduct = product.id
@@ -63,17 +64,19 @@ export class TableProductsComponent implements OnInit {
       }
     )
   }
+
   deleteProduct(id: number){
     if(confirm("Seguro quieres borrar este item?")){
       this.products = this.products.filter(item => item.id !== id)
     }
   }
+
   nameProduct?:string
   idProduct?:string
+
   replenishProduct(replenishModal,product){
     this.nameProduct = product.name_product
     this.idProduct = product.id
-    console.log(this.nameProduct)
     this.myForm=this.fb.group({
       cantidad:['1']
     })
@@ -83,6 +86,7 @@ export class TableProductsComponent implements OnInit {
       }
     )
   }
+
   async edit(){
     const res = await this.managerService.editProduct(
       this.idProduct,
@@ -91,7 +95,6 @@ export class TableProductsComponent implements OnInit {
       this.myForm.value.cantidad,
       this.myForm.value.price
     ).toPromise()
-    console.log(res)
     if(res && res.status){
       alert("Item editado correctamente!")
       this.initTable()
@@ -100,14 +103,18 @@ export class TableProductsComponent implements OnInit {
       alert("Ocurrio un error intente nuevamente")
     }
   }
+  
   async replenish(){
-    console.log(this.myForm.value.cantidad, this.idProduct)
     const res = await this.managerService.replenishProduct(
       this.idProduct, 
       this.myForm.value.cantidad
       ).toPromise()
-    console.log(res)
-    this.initTable()
-    this.modal.dismissAll()
+    if(res && res.status){
+      alert(this.nameProduct + " repuesto exitosamente!")
+      this.initTable()
+      this.modal.dismissAll()
+    }else{
+      alert("Ocurrio un error intente nuevamente")      
+    }
   }
 }
