@@ -20,14 +20,19 @@ const routes: Routes = [
   {
     path: 'principal',
     canActivate: [AuthRoutesService],
+    data:{role: 'admin'},
     loadChildren: () => import("./modules/principal/principal.module").then(m => m.PrincipalModule)
   },
   {
     path: 'manager',
+    canActivate: [AuthRoutesService],
+    data:{role: 'encargado_inventario'},
     loadChildren: () => import("./modules/manager/manager.module").then(m => m.ManagerModule)
   },
   {
     path: 'user',
+    canActivate: [AuthRoutesService],
+    data:{role: 'personal_medico'},
     loadChildren: () => import("./modules/user/user.module").then(m => m.UserModule)
   },
   {
