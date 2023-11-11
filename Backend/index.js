@@ -3,6 +3,8 @@ const cors = require('cors');
 const loginService = require('./login/loginService');
 const adminService = require('./admin/adminService');
 const inventarioService = require('./inventario/inventarioService');
+const medicoService = require('./medico/medicoService');
+const transaccionService = require('./transaccion/transaccionService');
 
 const app = express();
 const port = 3000;
@@ -60,6 +62,20 @@ app.post('/inventario/replenish', async (req, res) => {
 
 app.post('/inventario/delete', async (req, res) => {
   res.json(await inventarioService.deletee(req.body));
+});
+
+//ENDPOINT MEDICO SERVICE
+app.get('/medico/read', async (req, res) => {
+  res.json(await medicoService.read());
+});
+
+app.post('/medico/withdraw', async (req, res) =>{
+  res.json(await medicoService.withdraw(req.body));
+});
+
+//ENDPOINT TRANSACCION SERVICE
+app.get('/transaccion/read', async (req, res) => {
+  res.json(await transaccionService.read());
 });
 
 //LISTEN PORT
