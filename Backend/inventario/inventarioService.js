@@ -150,7 +150,7 @@ async function replenish(body){
             }
             else{
                 if(res.rowCount >= 1){
-                    console.log(res.rows[0]);
+                    //console.log(res.rows[0]);
                     const name_product = res.rows[0].name_product;
                     const new_cantidad = parseInt(res.rows[0].cantidad) + body.cantidad;
                     const query2 = `UPDATE inventario SET cantidad = ${new_cantidad} WHERE id = '${body.id_item}';`
