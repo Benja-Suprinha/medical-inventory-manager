@@ -20,6 +20,7 @@ export const ROUTES1: RouteInfo[] = [
 ]
 export const ROUTES2: RouteInfo[] = [
   { path: '/user/resumen', title: 'Dashboard', icon: 'dashboard', class: '' },
+  { path: '/user/items', title: 'Ver items', icon: 'content_paste', class: '' },  
 ]
 
 @Component({

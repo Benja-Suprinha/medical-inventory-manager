@@ -1,0 +1,68 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Tabla de Insumos</h4>
+                        <p class="card-category"> Visualiza a todos los insumos creados aca!</p>
+                    </div>
+                    <div class="card-body">
+                      
+                        <div class="table-responsive" *ngIf="!waiting">
+                          <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                          <thead>
+                            <tr>
+                              <th>ID</th>
+                              <th>Nombre</th>
+                              <th>Descripcion</th>
+                              <th>Cantidad</th>
+                              <th>Precio</th>
+                              <th>Usar!</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let product of products">
+                              <td>{{product.id}}</td>
+                              <td>{{product.name_product}}</td>
+                              <td>{{product.descripcion}}</td>
+                              <td>{{product.cantidad}}</td>
+                              <td>{{product.precio}}</td>
+                              <td>
+                                <button mat-raised-button color="warn" class="mat-button" size="large" (click)="withdrawItem(withdrawModal,product)">Usar</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                          </table>
+                        </div>
+                        <div class="table-responsive" *ngIf="waiting">
+                          <app-spinner></app-spinner>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #withdrawModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Usa unidades de {{nameProduct}}</h4>
+    <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="myForm" (ngSubmit)="withdraw()">
+      <div class="row">
+          <div class="col-md-12">
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="cantidad" placeholder="Cantidad a usar" type="number">
+              </mat-form-field>
+          </div>
+      </div>
+      <button mat-raised-button class="btn btn-danger pull-right">Usar!</button>
+      <div class="clearfix"></div>
+  </form>
+  </div>
+</ng-template>

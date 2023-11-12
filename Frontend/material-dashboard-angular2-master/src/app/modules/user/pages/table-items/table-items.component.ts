@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ManagerService } from 'app/shared/services/manager.service';
+import { UserService } from 'app/shared/services/user.service';
 
 @Component({
-  selector: 'app-table-products',
-  templateUrl: './table-products.component.html',
-  styleUrls: ['./table-products.component.scss']
+  selector: 'app-table-items',
+  templateUrl: './table-items.component.html',
+  styleUrls: ['./table-items.component.scss']
 })
-export class TableProductsComponent implements OnInit {
+export class TableItemsComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   products: any[] = []
   waiting: boolean = true
@@ -16,7 +16,7 @@ export class TableProductsComponent implements OnInit {
   constructor(
     private modal: NgbModal,
     private fb: FormBuilder,
-    private managerService: ManagerService
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class TableProductsComponent implements OnInit {
   }
 
   async initTable(){
-    const data: any = await this.managerService.Products().toPromise()
+    const data: any = await this.userService.Items().toPromise()
     this.waiting = false
     this.products = data
     this.dtOptions = {
@@ -48,34 +48,14 @@ export class TableProductsComponent implements OnInit {
 
   public myForm!: FormGroup
 
-  editProduct(editModal,product){
-    this.nameProduct = product.name_product
-    this.idProduct = product.id
-    this.myForm = this.fb.group({
-      name:[product.name_product],
-      description:[product.descripcion],
-      cantidad:[product.cantidad],
-      price:[product.precio]
-    })
-    this.modal.open(
-      editModal, {
-        backdrop: false
-      }
-    )
-  }
-
-  deleteProduct(id: number){
-    if(confirm("Seguro quieres borrar este item?")){
-      this.products = this.products.filter(item => item.id !== id)
-    }
-  }
-
   nameProduct?:string
   idProduct?:string
+  cantProduct?:number
 
-  replenishProduct(replenishModal,product){
+  withdrawItem(replenishModal,product){
     this.nameProduct = product.name_product
     this.idProduct = product.id
+    this.cantProduct = product.cantidad
     this.myForm=this.fb.group({
       cantidad:['1']
     })
@@ -85,31 +65,18 @@ export class TableProductsComponent implements OnInit {
       }
     )
   }
-
-  async edit(){
-    const res = await this.managerService.editProduct(
-      this.idProduct,
-      this.myForm.value.name,
-      this.myForm.value.description,
-      this.myForm.value.cantidad,
-      this.myForm.value.price
-    ).toPromise()
-    if(res && res.status){
-      alert("Item editado correctamente!")
-      this.initTable()
-      this.modal.dismissAll()
-    } else{
-      alert("Ocurrio un error intente nuevamente")
-    }
-  }
   
-  async replenish(){
-    const res = await this.managerService.replenishProduct(
+  async withdraw(){
+    console.log('llegue aca')
+    if(this.myForm.value.cantidad > this.cantProduct){
+      return alert('La cantidad excede al maximo!')
+    }
+    const res = await this.userService.withdrawItem(
       this.idProduct, 
       this.myForm.value.cantidad
       ).toPromise()
     if(res && res.status){
-      alert(this.nameProduct + " repuesto exitosamente!")
+      alert(this.nameProduct + " usado correctamente")
       this.initTable()
       this.modal.dismissAll()
     }else{
